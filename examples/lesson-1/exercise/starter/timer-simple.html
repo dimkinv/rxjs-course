@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 100px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            margin: 10px;
+        }
+        body{
+            background: black;
+            color: white;
+            font-size: 30px;
+        }
+        button{
+            font-size: 30px;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const start1 = document.querySelector('#start1');
+            const start2 = document.querySelector('#start2');
+            const timer1 = document.querySelector('#timer1');
+            const timer2 = document.querySelector('#timer2');
+
+
+            start1.addEventListener('click', () => {
+                // TODO: Add code here
+            });
+
+            start2.addEventListener('click', () => {
+               // TODO: Add code here
+            });
+        }
+
+
+        function numberToTime(number) {
+            // TODO: Make me beautiful to look like this: "MM:SS"
+        }
+
+    </script>
+</head>
+
+<body style="display: flex;">
+    <div>
+        <button type="button" id="start1">Start/Sync</button>
+        <span id="timer1"></span>
+    </div>
+    <div>
+        <button type="button" id="start2">Start/Sync</button>
+        <span id="timer2"></span>
+    </div>
+</body>
+
+</html>
