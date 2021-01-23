@@ -32,8 +32,10 @@
             const timer1 = document.querySelector('#timer1');
             const timer2 = document.querySelector('#timer2');
 
+            const $start1Click = rxjs.fromEvent(start1, 'click');
+            const $start2Click = rxjs.fromEvent(start2, 'click');
 
-            start1.addEventListener('click', () => {
+            $start1Click.subscribe(() => {
                 if (!$interval) {
                     $interval = rxjs.interval(1000);
                     $interval.subscribe(time => {
@@ -45,7 +47,7 @@
                 });
             });
 
-            start2.addEventListener('click', () => {
+            $start2Click.subscribe(() => {
                 if (!$interval) {
                     $interval = rxjs.interval(1000);
                 }
