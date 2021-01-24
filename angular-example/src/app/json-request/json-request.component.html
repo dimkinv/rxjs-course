@@ -1,0 +1,6 @@
+<h3>Famous quotes</h3>
+<ul *ngIf="data">
+  <li *ngFor="let item of data">
+    {{item.content}}
+  </li>
+</ul>
