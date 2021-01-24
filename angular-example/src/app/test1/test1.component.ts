@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class Test1Component implements OnInit {
 
   constructor(private activateRoute: ActivatedRoute) { }
-
+  clicked = 0
   id: string;
 
   ngOnInit(): void {
@@ -19,6 +19,6 @@ export class Test1Component implements OnInit {
   }
 
   subButtonClicked(){
-    
+    this.clicked ++;
   }
 }

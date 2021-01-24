@@ -1,7 +1,8 @@
-<p>test1 works!</p>
+<h2>Routung params</h2>
 Id is: {{id}}
 
-<app-sub-comp (buttonClick)="subButtonClicked($event)"></app-sub-comp>
-
+<app-sub-comp (buttonClick)="subButtonClicked()"></app-sub-comp>
+<h3>Parent Component</h3>
+<span>Sub Component button clicked {{clicked}} times</span>
 
 <app-reactive></app-reactive>
