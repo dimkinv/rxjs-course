@@ -183,6 +183,23 @@ source$
 		</code></pre>
             </section>
             <section>
+                <h3>Unsubscribe 🙅‍</h3>
+                <pre><code class="language-typescript" data-trim>
+const subscriber = source$.subscribe( /* do something... */);
+</code>
+<img class="reset-img" style="width: 400px; display: block; margin: auto;" src="../assets/2000-years.jpg" alt="">
+<code class="language-typescript" data-trim>
+subscriber.unsubscribe();
+</code></pre>
+            </section>
+            <section>
+                <h3>Finite vs. Infinite</h3>
+                <ul>
+                    <li>One must unsubscribe from infinite</li>
+                    <li>When you doubt... unsubscribe!</li>
+                </ul>
+            </section>
+            <section>
                 <h3>Exercise 1</h3>
                 <p>exercise/starter/timer-simple.html</p>
                 <iframe src="file:///Users/dv696w/work/rxjs-course/code/lesson-1/exercise/solutions/timer-simple.html"></iframe>
@@ -193,7 +210,7 @@ source$
                     A special multicast observable a.k.a EventEmmiter 🤔
                 </p>
                 <p>
-                    <u>Sunject Subtypes</u>
+                    <u>Subject Subtypes</u>
                     <ul class="no-style">
                         <li>ReplaySubject</li>
                         <li>BehaviourSubject</li>
@@ -207,217 +224,10 @@ source$
                 <iframe src="file:///Users/dv696w/work/rxjs-course/code/lesson-1/exercise/solutions/timer-simple-synced.html"></iframe>
             </section>
             <section>
-                <h5>demo</h5>
+                <h3>Angular!</h3>
             </section>
             <section>
-                <h6>BehaviorSubject</h6>
-                <pre><code class="language-typescript" data-trim>
-import { BehaviorSubject } from 'rxjs';
-
-// Create an Observable
-const source$ = new BehaviorSubject({ cards: [] })
-
-// Subscribe
-const subscriber = source$.subscribe(state => 
-        console.log('State changed: ', state));
-
-source$.next({ cards: [{id: 1} });
-source$.next({ cards: [{id: 1}, {id: 2}] });
-
-</code>
-<i>console output:</i><code class="language-javascript" data-trim>
-State changed: { cards: [{id: 1}] }
-State changed: { cards: [{id: 1}, {id: 2}] }
-</code></pre>
-            </section>
-            <section>
-                <h5>demo</h5>
-            </section>
-            <section>
-                <h3>👂 Subscriber</h3>
-                <img class="reset-img" src="../assets/rxjs-3.png" alt="rxjs-source">
-            </section>
-            <section>
-                <pre><code class="language-typescript" data-trim>
-const source$ = interval(1000);
-
-const subscriber = source$
-  .subscribe(
-    (i) => console.log(i),       // success
-    (err) => console.error(err), // failure
-    () => console.info('done!')  // done
-  );
-</code>
-<i>console output:</i><code class="language-javascript" data-trim>
-0
-1
-...
-Infinity
-</code></pre>
-            </section>
-            </section>
-            <section>
-                <h3>Unsubscribe 🙅‍</h3>
-                <pre><code class="language-typescript" data-trim>
-const subscriber = source$.subscribe( /* do something... */);
-</code>
-<img class="reset-img" style="width: 400px; display: block; margin: auto;" src="../assets/2000-years.jpg" alt="">
-<code class="language-typescript" data-trim>
-subscriber.unsubscribe();
-</code></pre>
-            </section>
-            <section>
-                <h3>🤹 Operators</h3>
-                <img class="reset-img" src="../assets/rxjs-4.png" alt="rxjs-source">
-            </section>
-
-
-            <section>
-                <h5>map -> filter</h5>
-                <pre><code class="language-typescript" data-trim>
-const source$ = interval(1000);
-
-source$
-  .pipe(
-    map(n => n ** 2),         // Math.pow(n, 2)
-    filter(n => n % 2 !== 0), // is odd ?
-  )
-  .subscribe(num => console.log(num));
-					</code>
-<i>console output:</i><code class="language-javascript" data-trim>
-1
-9
-25
-49
-</code></pre>
-                </pre>
-            </section>
-            <section>
-                <iframe src="http://rxmarbles.com/" width="100%" height="600px" frameborder="0"></iframe>
-            </section>
-            <section>
-                <h5>getting crazy with operators</h5>
-            </section>
-            <section>
-                <h5>Memory Leaks from Subscriptions</h5>
-                <i>finite vs. infinite</i>
-            </section>
-            <section>
-                <h3>HTTP Client</h3>
-            </section>
-            <section>
-                <h5>import HttpClientModule</h5>
-                <pre><code class="language-typescript" data-trim>
-import { HttpClientModule } from '@angular/common/http';
-@NgModule({
-  declarations: [/**/],
-  imports: [
-    HttpClientModule,
-  ],
-  providers: [/**/],
-  bootstrap: [/**/]
-})
-export class AppModule { }
-</code></pre>
-            </section>
-            <section>
-                <h3>HTTP Client methods</h3>
-                <pre><code class="language-typescript" data-trim>
-class HttpClient {
-  request&lt;T=any>(...): Observable&lt;T>
-  delete&lt;T=any>(...): Observable&lt;T>
-  get&lt;T=any>(...): Observable&lt;T>
-  head&lt;T=any>(...): Observable&lt;T>
-  jsonp&lt;T>(...): Observable&lt;T>
-  options&lt;T=any>(...): Observable&lt;T>
-  patch&lt;T=any>(...): Observable&lt;T>
-  post&lt;T=any>(...): Observable&lt;T>
-  put&lt;T=any>(...): Observable&lt;T>
-}
-</code></pre>
-            </section>
-            <section>
-                <h5>HTTP GET example</h5>
-                <pre><code class="language-typescript" data-trim>
-httpClient.get&lt;UserProfile>('/profile')
-  .pipe(
-    pluck('username')
-  )
-  .subscribe(username => {
-    console.log(`Logged as: ${username}`);
-  });
-</code></pre>
-                <br><br>
-                <i style="font-size: 30px">Note: httpClient stream ends itself when request received so .unsubscribe()
-                    is not needed here.</i>
-            </section>
-            <section>
-                <h3>HTTP interceptors</h3>
-                <i>Common usages</i>
-            </section>
-            <section>
-                <h5>Authentication header</h5>
-                <pre><code class="language-typescript" data-trim>
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  constructor(
-	private router: Router, 
-	private authSelectors: AuthSelectors,
-  ) { }
-
-  intercept(request: HttpRequest&lt;unknown>, next: HttpHandler): Observable&lt;HttpEvent&lt;unknown>> {
-    return next.handle(request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
-    }));
-  }
-}	
-			</code></pre>
-            </section>
-
-            <section>
-                <h5>Catch authentication errors</h5>
-                <pre><code class="language-typescript" data-trim>
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  constructor(/**/) { }
-  intercept(request: HttpRequest&lt;unknown>, next: HttpHandler): Observable&lt;HttpEvent&lt;unknown>> {
-    return next.handle(request.clone({
-      setHeaders: {
-      Authorization: `Bearer ${token}`
-      }
-    })).pipe(
-      catchError((err: HttpEvent&lt;unknown>) => {
-      if (err instanceof HttpErrorResponse) {
-        if (err.status === 401) {
-          goToLoginPage();
-          return throwError(err);
-        }
-      }
-      })
-    );
-  }
-}
-				
-			</code></pre>
-            </section>
-            <section>
-                <h3>Testing observables</h3>
-            </section>
-            <section>
-                <h3>Action Time</h3>
-                <img class="reset-img" src="../assets/bungee.png" />
-            </section>
-            <section>
-                <h6>GameService</h6>
-                <ul>
-                    <li><b>Server:</b> Get 12 cards using HTTP call from <b>/api/game/board/12</b></li>
-                    <li><b>Reactive:</b> Move game state to GameService and expose it as Observable (use BehaviorSubject
-                        to create a new Observable).</li>
-                </ul>
-                <br><br>
-                <i>To start the server, go to <b>/server</b> dir and run: <b>`yarn start`</b>.</i>
+                <h4>Done!</h4>
             </section>
         </div>
     </div>

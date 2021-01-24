@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="../revealjs/css/reveal.css">
+    <link rel="stylesheet" href="../revealjs/css/theme/night.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../revealjs/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../../revealjs/css/print/pdf.css' : '../revealjs/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        body {
+            background-image: url(../assets/angular-logo.svg);
+            background-repeat: no-repeat;
+            background-size: 50% auto;
+            background-position: -25% -60%;
+        }
+
+        .reset-img {
+            border: 0 !important;
+            background: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h2>RXJS</h2>
+                <p>Code: <a href="https://bit.ly/2LPL49P">https://bit.ly/2LPL49P</a></p>
+                <p>Presentation: <a href="https://bit.ly/36a4yN9">https://bit.ly/36a4yN9</a></p>
+            </section>
+            <section>
+                <h3>🤹 Operators</h3>
+                <img class="reset-img" src="../assets/rxjs-4.png" alt="rxjs-source">
+            </section>
+            <section>
+                <h3>Noteable operators</h3>
+                <ul>
+                    <li>map</li>
+                    <li>filter</li>
+                    <li>forkJoin</li>
+                    <li>merge</li>
+                    <li>last</li>
+                    <li>takeUntil</li>
+                    <li>... 🤯</li>
+                </ul>
+            </section>
+            <section>
+				<h5>map -> filter</h5>
+			<pre><code class="language-typescript" data-trim>
+const source$ = interval(1000);
+
+source$
+  .pipe(
+    map(n => n ** 2),         // Math.pow(n, 2)
+    filter(n => n % 2 !== 0), // is odd ?
+  )
+  .subscribe(num => console.log(num));
+					</code>
+<i>console output:</i><code class="language-javascript" data-trim>
+1
+9
+25
+49
+</code></pre></pre>
+			</section>
+        </div>
+    </div>
+
+    <script src="../revealjs/lib/js/head.min.js"></script>
+    <script src="../revealjs/js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            history: true,
+            dependencies: [
+                { src: '../revealjs/plugin/markdown/marked.js' },
+                { src: '../revealjs/plugin/markdown/markdown.js' },
+                { src: '../revealjs/plugin/notes/notes.js', async: true },
+                { src: '../revealjs/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+
+</html>

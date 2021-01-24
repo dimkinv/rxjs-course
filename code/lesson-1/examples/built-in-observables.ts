@@ -1,5 +1,4 @@
-import EventEmitter from "events";
-import { from, fromEvent, of } from "rxjs";
+import { from, of } from "rxjs";
 
 console.log('of ------------------------------------');
 
