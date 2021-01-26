@@ -7,10 +7,10 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.get('/', (req, res) => {
     const shouldFail = Math.floor(Math.random() * 10) % 2 === 0;
-    if(shouldFail){
+    if (shouldFail) {
         res.status(500).end();
-    } else{
-        res.send('Hello World!')
+    } else {
+        res.send({ message: 'Hello World!' })
     }
 });
 

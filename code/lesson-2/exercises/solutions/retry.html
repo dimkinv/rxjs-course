@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 100px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            margin: 10px;
+        }
+        body{
+            background: black;
+            color: white;
+            font-size: 30px;
+        }
+        button{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<script>
+    window.onload = () => {
+        const button = document.querySelector('#getData');
+        const result = document.querySelector('#result');
+
+        const $buttonClick = rxjs.fromEvent(button, 'click');
+
+        $buttonClick.pipe(
+            rxjs.operators.switchMap(() =>
+                rxjs.ajax.ajax('https://flaky-server.herokuapp.com/').pipe(
+                    rxjs.operators.retryWhen(errors => errors.pipe(rxjs.operators.delay(2000)))
+                )
+            )
+        ).subscribe(response => result.innerHTML = response.response.message);
+    }
+</script>
+
+<body>
+    <button type="button" id="getData">get data!</button>
+    <div id="result"></div>
+</body>
+
+</html>
