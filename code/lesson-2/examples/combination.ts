@@ -19,9 +19,10 @@ $combination.subscribe(value => console.log(value));
 // $combination.subscribe(value => console.log(value));
 
 // merge
+
 // const $timer = interval(1000);
 // const $series = from([1,2,3,4,5,6]);
 
-const $combination = merge($timer, $series);
+// const $combination = merge($timer, $series);
 
 // $combination.subscribe(value => console.log(value));
