@@ -38,9 +38,6 @@
             $start1Click.subscribe(() => {
                 if (!$interval) {
                     $interval = rxjs.interval(1000);
-                    $interval.subscribe(time => {
-                        timer1.innerHTML = time
-                    });
                 }
                 $interval.subscribe(time => {
                     timer1.innerHTML = numberToTime(time)
