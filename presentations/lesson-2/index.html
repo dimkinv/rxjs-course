@@ -48,9 +48,135 @@
             <section>
                 <h3>🤹 Operators</h3>
                 <img class="reset-img" src="../assets/rxjs-4.png" alt="rxjs-source">
+                <ul>
+                    <li>Pure functions</li>
+                    <li>Can be stateless or statefull</li>
+                    <li>Do not change the original observable!!!</li>
+                </ul>
             </section>
             <section>
-                <h3>Noteable operators</h3>
+                <h5>Usage example</h5>
+                <pre><code class="language-typescript" data-trim>
+const source$ = interval(200);
+
+source$
+  .pipe(
+    map(n => n ** 2),         // Math.pow(n, 2)
+    filter(n => n % 2 !== 0), // is odd ?
+  )
+  .subscribe(num => console.log(num));
+                    </code></pre>
+                <div style="background: white;display: flex;justify-content: center;">
+                    <svg width="684" height="63"
+                        style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;">
+                        <g transform="translate(0, 11)">
+                            <g transform="translate(21, 0)">
+                                <line x1="0" y1="26" x2="653" y2="26" stroke-width="2" stroke="#000000"
+                                    style="shape-rendering: crispedges;"></line>
+                                <path transform="translate(653, 21)" d="M0 0 L10 5 L0 10 z" fill="#000000"
+                                    style="transition: fill 0.2s ease-in-out 0s;"></path>
+                                <g>
+                                    <g
+                                        style="transform: translate(52.5012px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">1</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(104.611px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">9</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(156.981px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">25</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(209.221px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">49</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(261.461px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">81</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(313.701px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">121</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(365.941px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">169</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(418.181px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">225</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(470.421px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">289</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(522.661px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">361</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(574.901px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">441</text>
+                                    </g>
+                                    <g
+                                        style="transform: translate(627.011px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;">
+                                        <circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff">
+                                        </circle><text x="0" y="0"
+                                            style="fill: rgb(0, 0, 0); dominant-baseline: central;">529</text>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                        <g style="text-anchor: start; dominant-baseline: text-before-edge;"></g>
+                    </svg>
+                </div>
+            </section>
+            <section>
+                <h3>Operator creates new observable</h3>
+                <pre><code>function multiplyByTen(input) {
+    var output = Rx.Observable.create(function subscribe(observer) {
+        input.subscribe({
+        next: (v) => observer.next(10 * v),
+        error: (err) => observer.error(err),
+        complete: () => observer.complete()
+        });
+    });
+    return output;
+}
+
+var input = Rx.Observable.from([1, 2, 3, 4]);
+var output = multiplyByTen(input);
+output.subscribe(x => console.log(x));</code></pre>
+                <p><i style="font-size: 20px;">from <a
+                            href="http://reactivex.io/rxjs/manual/overview.html#operators">http://reactivex.io/rxjs/manual/overview.html#operators</a></i>
+                </p>
+            </section>
+            <section>
+                <h3>So many operators</h3>
                 <ul>
                     <li>map</li>
                     <li>filter</li>
@@ -62,29 +188,93 @@
                 </ul>
             </section>
             <section>
-                <h3>Operator Types</h3>
-                <ul style="list-style: none;">
-                    <li>Filtering</li>
-                    <li>Conditional</li>
-                    <li>Combination</li>
+                <h3>Operator Categories</h3>
+                <ul>
+                    <li>Creation Operators</li>
+                    <li>Transformation Operators</li>
+                    <li>Filtering Operators</li>
+                    <li>Combination Operators</li>
+                    <li>Error Handling Operators</li>
+                    <li>Utility Operators</li>
+                    <li>Condition Operators</li>
+                    <li>Math and Arrgegation Operators</li>
                 </ul>
             </section>
             <section>
-				<h5>map, filter</h5>
-			<pre><code class="language-typescript" data-trim>
-const source$ = interval(200);
+                <h3>Notable creation operators</h3>
+                <ul>
+                    <li>from</li>
+                    <li>fromEvent</li>
+                    <li>of</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Notable transformation operators</h3>
+                <ul>
+                    <li>map</li>
+                    <li>scan</li>
+                    <li>switchMap</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Exercise 1</h3>
+                <p>code/lesson-2/exercises/starter/timer-simple-synced-map.html</p>
+                <iframe
+                    src="file:///Users/dv696w/work/rxjs-course/code/lesson-2/exercises/starter/timer-simple-synced-separation.html"></iframe>
+            </section>
+            <section>
+                <h3>Notable filtering operators</h3>
+                <ul>
+                    <li>debounceTime</li>
+                    <li>filter</li>
+                    <li>take(n) - takes n events from stream</li>
+                    <li>takeUntil - takes until another observable emits</li>
+                    <li>throttleTime</li>
+                    <li>distinctUntilChanged</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Notable combination operators</h3>
+                <ul>
+                    <li>concat</li>
+                    <li>merge</li>
+                    <li>switchMap</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Static vs. Instance operators</h3>
+                <p>instance</p>
+                <pre><code>import { merge } from 'rxjs/operators';
+import { interval } from 'rxjs';
 
-source$
-  .pipe(
-    map(n => n ** 2),         // Math.pow(n, 2)
-    filter(n => n % 2 !== 0), // is odd ?
-  )
-  .subscribe(num => console.log(num));
-                    </code></pre>
-                    <div style="background: white;display: flex;justify-content: center;">
-                    <svg width="684" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><g transform="translate(21, 0)"><line x1="0" y1="26" x2="653" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"></line><path transform="translate(653, 21)" d="M0 0 L10 5 L0 10 z" fill="#000000" style="transition: fill 0.2s ease-in-out 0s;"></path><g><g style="transform: translate(52.5012px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">1</text></g><g style="transform: translate(104.611px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">9</text></g><g style="transform: translate(156.981px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">25</text></g><g style="transform: translate(209.221px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">49</text></g><g style="transform: translate(261.461px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">81</text></g><g style="transform: translate(313.701px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">121</text></g><g style="transform: translate(365.941px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">169</text></g><g style="transform: translate(418.181px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">225</text></g><g style="transform: translate(470.421px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">289</text></g><g style="transform: translate(522.661px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">361</text></g><g style="transform: translate(574.901px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">441</text></g><g style="transform: translate(627.011px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">529</text></g></g></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"></g></svg>
-                </div>
-			</section>
+const first = interval(2500);
+const second = interval(1000);
+const example = first.pipe(merge(second));
+const subscribe = example.subscribe(val => console.log(val));
+//output: 0,1,0,2....</code></pre>
+                <p>static</p>
+                <pre><code>const first = interval(1500);
+const second = interval(2000);
+
+//emit outputs from one observable
+const example = merge(
+    first.pipe(mapTo('FIRST!')),
+    second.pipe(mapTo('SECOND!')),
+);</code></pre>
+            </section>
+            <section>
+                <h3>Exercise 2</h3>
+                <p>code/lesson-2/exercises/starter/timer-simple-synced-separation.html</p>
+                <iframe
+                    src="file:///Users/dv696w/work/rxjs-course/code/lesson-2/exercises/starter/timer-simple-synced-separation.html"></iframe>
+            </section>
+            <section>
+                <h3>Notable error handling operators</h3>
+                <ul>
+                    <li>retry</li>
+                    <li>catchError - must return observable</li>
+                </ul>
+            </section>
         </div>
     </div>
 
